@@ -1,5 +1,7 @@
 import config
+import calendar
 from github import Github
+import time
 
 ACCESS_TOKEN = config.gh_api_key
 
@@ -13,6 +15,9 @@ def repo_default_branch(filterkey):
         corerate = rate_limit.core
         if corerate.remaining == 0:
             print(f'You have 0/{corerate.limit} core API calls remaining. Reset time: {corerate.reset}')
+            reset_timestamp = calendar.timegm(rate.reset.timetuple())
+            sleep_time = reset_timestamp - calendar.timegm(time.gmtime()) + 5  # add 5 seconds to be sure the rate limit has been reset
+            time.sleep(sleep_time)
             return
         else:
             print(f'Your API call rate for core: {corerate.remaining}/{corerate.limit}')
