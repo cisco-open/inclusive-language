@@ -13,12 +13,12 @@ Note that the script can only look for repos that your GitHub user has access to
 Example `config.py`:
 ```
 gh_api_key = "ghp_TotallyaFaKeTok3nIprom1seYouS0d0ntTrYit"
-gh_orgname = "CiscoDevNet"
+gh_orgname = "cisco-open"
 ```
 
 ## Inventory listing using the GitHub REST API and a personal access token
 
-The `gh_search.py` file is a Python example using the REST API and the `PyGitHub` library. In my testing on a large org like Cisco DevNet, I found it necessary to insert sleep pauses when GitHub returns a large list for the query. 
+The `gh_search.py` file is a Python example using the REST API and the `PyGitHub` library. In my testing on a large org like `CiscoDevNet`, I found it necessary to insert sleep pauses when GitHub returns a large list for the query. 
 
 To get a list of repos with a keyword in certain files:
 1. Create a `config.py` file in the root of the repository with your [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) with "repo" scope.
