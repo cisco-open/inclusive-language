@@ -1,0 +1,38 @@
+# *************** Cisco Inclusive Language Policy for Woke Linter Rules YAML *******
+# Terminology defined based on: 
+# https://www.cisco.com/c/en/us/about/social-justice/inclusive-language-policy.html
+# *************** *************** *************** *************** *************** **
+
+rules:
+  - name: whitelist
+    terms:
+      - whitelist
+    alternatives:
+      - permit(list)
+      - allow(list)
+
+  - name: master
+    terms:
+      - master
+    alternatives:
+      - primary
+      - control
+      - active
+      - source
+      - parent
+      - main
+
+  - name: slave
+    terms:
+      - slave
+    alternatives:
+      - secondary
+      - subordinate
+      - data
+      - standby
+      - subsidiary
+      - replica
+      - worker
+      - child
+      - helper
+      - follower
