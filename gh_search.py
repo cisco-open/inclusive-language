@@ -64,9 +64,11 @@ def search_github(keyword, filetype):
     
 
 if __name__ == '__main__':
-    keyword = input('Enter biased keyword such as master, slave, blacklist, whitelist: ')
-    filetype = input('Enter extension for files to search within such as py for Python, md for Markdown, enter any for all file types: ')
+    keyword = input('Enter biased keyword such as \"master\", \"slave\", \"blacklist\", \"whitelist\": ')
+    filetype = input('Enter extension for files to search within such as \"py\" for Python, \"md\" for Markdown, and enter \"any\" for all file types: ')
     #keyword = 'whitelist'
+    #keyword = 'slave'
     #filetype = 'any'
+    #filetype = 'js'
     search_github(keyword, filetype)
 
