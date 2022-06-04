@@ -22,15 +22,19 @@ def search_github(keyword, filetype):
             query = f'"{keyword}" org:{config.gh_orgname}'
             result = g.search_code(query, order='desc')
 
-            max_size = 100
+            PAGE_SIZE = 100
+            c = 1
             
             print(f'Found {result.totalCount} file(s) with {keyword}')
             print(f'Keyword,File type,GitHub URL,File match')
-            if result.totalCount > max_size:
-                result = result[:max_size]
+            pages = result.totalCount%PAGE_SIZE
+            for i in range(pages):
+                tempResult = result[c:c+PAGE_SIZE]
+                c += PAGE_SIZE
                 try:
+                    print(f"Page: {i+1} of {pages}")
                     time.sleep(10)
-                    for file in result:
+                    for file in tempResult:
                         path = file.path
                         try:
                             actualfiletype = path.rsplit(sep='.')[1]
@@ -47,14 +51,19 @@ def search_github(keyword, filetype):
             query = f'"{keyword}" org:{config.gh_orgname} in:file extension:{filetype}'
             result = g.search_code(query, order='desc')
 
-            max_size = 100
-            print(f'Found {result.totalCount} {filetype} file(s) with {keyword}')
+            PAGE_SIZE = 100
+            c = 1
+            
+            print(f'Found {result.totalCount} file(s) with {keyword}')
             print(f'Keyword,File type,GitHub URL,File match')
-            if result.totalCount > max_size:
-                result = result[:max_size]
+            pages = result.totalCount%PAGE_SIZE
+            for i in range(pages):
+                tempResult = result[c:c+PAGE_SIZE]
+                c += PAGE_SIZE
                 try:
+                    print(f"Page: {i+1} of {pages}")
                     time.sleep(10)
-                    for file in result:
+                    for file in tempResult:
                         print(f'{keyword},{filetype},{file.download_url},{file.path}')
                 except Exception as e:
                     print(e)
@@ -64,11 +73,11 @@ def search_github(keyword, filetype):
     
 
 if __name__ == '__main__':
-    keyword = input('Enter biased keyword such as \"master\", \"slave\", \"blacklist\", \"whitelist\": ')
-    filetype = input('Enter extension for files to search within such as \"py\" for Python, \"md\" for Markdown, and enter \"any\" for all file types: ')
+    #keyword = input('Enter biased keyword such as \"master\", \"slave\", \"blacklist\", \"whitelist\": ')
+    #filetype = input('Enter extension for files to search within such as \"py\" for Python, \"md\" for Markdown, and enter \"any\" for all file types: ')
     #keyword = 'whitelist'
-    #keyword = 'slave'
-    #filetype = 'any'
+    keyword = 'slave'
+    filetype = 'any'
     #filetype = 'js'
     search_github(keyword, filetype)
 
