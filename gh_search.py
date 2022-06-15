@@ -7,7 +7,20 @@ ACCESS_TOKEN = config.gh_api_key
 
 g = Github(ACCESS_TOKEN)
 
+def convert_entries_to_pages(total_entries):
+    PAGE_SIZE = 100
+    leftover_entries = total_entries % PAGE_SIZE
+    pages = total_entries // PAGE_SIZE
+    print("extra entries: ", leftover_entries)
+    if pages > 1:
+        pages = pages + 1
+        return pages
+    else:
+        return 1
+
 def search_github(keyword, filetype):
+    PAGE_SIZE = 100
+    c = 0
     rate_limit = g.get_rate_limit()
     rate = rate_limit.search
     if rate.remaining == 0:
@@ -22,12 +35,10 @@ def search_github(keyword, filetype):
             query = f'"{keyword}" org:{config.gh_orgname}'
             result = g.search_code(query, order='desc')
 
-            PAGE_SIZE = 100
-            c = 1
-            
             print(f'Found {result.totalCount} file(s) with {keyword}')
+            
             print(f'Keyword,File type,GitHub URL,File match')
-            pages = result.totalCount%PAGE_SIZE
+            pages = convert_entries_to_pages(result.totalCount)
             for i in range(pages):
                 tempResult = result[c:c+PAGE_SIZE]
                 c += PAGE_SIZE
@@ -43,23 +54,20 @@ def search_github(keyword, filetype):
                         print(f'{keyword},{actualfiletype},{file.download_url},{file.path}')
                 except Exception as e:
                     print(e)
-            else:
-                for file in result:
-                    print(f'{keyword},{actualfiletype},{file.download_url},{file.path}')
 
         else:  
             query = f'"{keyword}" org:{config.gh_orgname} in:file extension:{filetype}'
             result = g.search_code(query, order='desc')
-
-            PAGE_SIZE = 100
-            c = 1
             
             print(f'Found {result.totalCount} file(s) with {keyword}')
             print(f'Keyword,File type,GitHub URL,File match')
-            pages = result.totalCount%PAGE_SIZE
-            for i in range(pages):
+            pages = convert_entries_to_pages(result.totalCount)
+             
+            for i in range(0, pages, 100):
+                print("i is now: ", i)
                 tempResult = result[c:c+PAGE_SIZE]
                 c += PAGE_SIZE
+                print("Count is now: ",c)
                 try:
                     print(f"Page: {i+1} of {pages}")
                     time.sleep(10)
@@ -67,10 +75,7 @@ def search_github(keyword, filetype):
                         print(f'{keyword},{filetype},{file.download_url},{file.path}')
                 except Exception as e:
                     print(e)
-            else:
-                for file in result:
-                    print(f'{keyword},{filetype},{file.download_url},{file.path}')
-    
+            
 
 if __name__ == '__main__':
     #keyword = input('Enter biased keyword such as \"master\", \"slave\", \"blacklist\", \"whitelist\": ')
@@ -78,6 +83,5 @@ if __name__ == '__main__':
     #keyword = 'whitelist'
     keyword = 'slave'
     filetype = 'any'
-    #filetype = 'js'
+    #filetype = 'py'
     search_github(keyword, filetype)
-
