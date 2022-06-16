@@ -17,52 +17,52 @@ def search_github(keyword, filetype):
         time.sleep(sleep_time)
         return
     else:
-        print(f'You have {rate.remaining}/{rate.limit} API calls remaining')
+        #print(f'You have {rate.remaining}/{rate.limit} API calls remaining')
         if filetype == 'any':
             query = f'"{keyword}" org:{config.gh_orgname}'
-            result = g.search_code(query, order='desc')
-
-            max_size = 30
-            print(f'Found {result.totalCount} file(s) with {keyword}')
+            searchresults = g.search_code(query, order='desc')
+            # search_code returns a paginated_list https://pygithub.readthedocs.io/en/latest/utilities.html?highlight=pagination#pagination
+            #print(f'Found {searchresults.totalCount} entries with {keyword}')
+            #print("searchresults type is: ", str(type(searchresults)))
+            # Prints the column labels
             print(f'Keyword,File type,GitHub URL,File match')
-            if result.totalCount > max_size:
-                result = result[:max_size]
+
+            for entry in searchresults:
                 try:
-                    time.sleep(10)
-                    for file in result:
-                        path = file.path
+                    time.sleep(9)
+                    # each entry is a ContentFile https://pygithub.readthedocs.io/en/latest/github_objects/ContentFile.html#github.ContentFile.ContentFile
+                    # print("entry variable is type: ", str(type(entry)))
+                    path = entry.path
+                    try:
                         actualfiletype = path.rsplit(sep='.')[1]
-                        print(f'{keyword},{actualfiletype},{file.download_url},{file.path}')
+                    except Exception as e:
+                        # Sometimes the string split would find another character, causing an error
+                        actualfiletype = path.rsplit(sep='/')[1] 
+                    print(f'{keyword},{actualfiletype},{entry.download_url},{entry.path}')
                 except Exception as e:
-                    print(e)
-            else:
-                for file in result:
-                    print(f'{keyword},{actualfiletype},{file.download_url},{file.path}')
+                    print("Error: ", e)
 
-        else:  
+        else:
+            # For queries with an exact file type
             query = f'"{keyword}" org:{config.gh_orgname} in:file extension:{filetype}'
-            result = g.search_code(query, order='desc')
-
-            max_size = 30
-            print(f'Found {result.totalCount} {filetype} file(s) with {keyword}')
+            searchresults = g.search_code(query, order='desc')
+            
+            #print(f'Found {searchresults.totalCount} entries(s) with {keyword}')
             print(f'Keyword,File type,GitHub URL,File match')
-            if result.totalCount > max_size:
-                result = result[:max_size]
+             
+            for entry in searchresults:
                 try:
-                    time.sleep(10)
-                    for file in result:
-                        print(f'{keyword},{filetype},{file.download_url},{file.path}')
+                    # Try to avoid rate limits
+                    time.sleep(9)
+                    print(f'{keyword},{filetype},{searchresults.download_url},{searchresults.path}')
                 except Exception as e:
-                    print(e)
-            else:
-                for file in result:
-                    print(f'{keyword},{filetype},{file.download_url},{file.path}')
-    
+                    print("Error: ", e)
 
 if __name__ == '__main__':
-    #keyword = input('Enter biased keyword such as master, slave, blacklist, whitelist: ')
-    #filetype = input('Enter extension for files to search within such as py for Python, md for Markdown, any for all file types: ')
-    keyword = 'whitelist'
-    filetype = 'any'
+    keyword = input('Enter biased keyword such as \"master\", \"slave\", \"blacklist\", \"whitelist\": ')
+    filetype = input('Enter extension for files to search within such as \"py\" for Python, \"md\" for Markdown, and enter \"any\" for all file types: ')
+    #keyword = 'whitelist'
+    #keyword = 'slave'
+    #filetype = 'any'
+    #filetype = 'py'
     search_github(keyword, filetype)
-

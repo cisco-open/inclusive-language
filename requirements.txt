@@ -1,4 +1,4 @@
-certifi==2021.10.8
+certifi==2022.5.18.1
 cffi==1.15.0
 charset-normalizer==2.0.12
 Deprecated==1.2.13
@@ -7,11 +7,7 @@ pycparser==2.21
 PyGithub==1.55
 PyJWT==2.4.0
 PyNaCl==1.5.0
-requests==2.27.1
+requests==2.28.0
 six==1.16.0
 urllib3==1.26.9
-<<<<<<< HEAD
 wrapt==1.14.1
-=======
-wrapt==1.14.0
->>>>>>> b7429a9e4460c2b5011fdb6b50467eaa5d8da30e
