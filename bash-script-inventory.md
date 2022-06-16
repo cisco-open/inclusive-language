@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# Getting an Inventory in Repositories with Bash
-=======
 # Getting an inventory in repositories with Bash
->>>>>>> b7c616523537b94dc3cddcd7ff691b93eb005951
 
 What if you need to analyze a lot of repositories to count the number of times a certain keyword is used? In this example, you want to search for "master" or "slave" using Bash on local repositories.
 
