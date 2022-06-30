@@ -47,6 +47,14 @@ def search_github(keyword, filetype):
                     print(f'{keyword},{actualfiletype},{entry.html_url},{entry.path}')
                 except Exception as e:
                     print("Error: ", e)
+            else:
+                for file in result:
+                    path = file.path
+                    try:
+                        actualfiletype = path.rsplit(sep='.')[1]
+                    except Exception as e:
+                        actualfiletype = path.rsplit(sep='/')[1]
+                    print(f'{keyword},{actualfiletype},{file.download_url},{file.path}')
 
         else:
             # For queries with an exact file type
