@@ -137,19 +137,18 @@ def search_enterprise_github(keyword, filetype):
                     print("Error: ", e)
 
 if __name__ == '__main__':
-    which_github = input('Enter GitHub for github.com or Enterprise for Enterprise GitHub: ')
+    which_github = input('Enter Enterprise for Enterprise GitHub, otherwise by default search GitHub: ')
     keyword = input('Enter biased keyword such as \"master\", \"slave\", \"blacklist\", \"whitelist\": ')
     filetype = input('Enter extension for files to search within such as \"py\" for Python, \"md\" for Markdown, and enter \"any\" for all file types: ')
     #keyword = 'whitelist'
     #keyword = 'slave'
     #filetype = 'any'
     #filetype = 'py'
-    if which_github == "GitHub":
-        search_github(keyword, filetype)
-    elif which_github == "Enterprise":
+    if which_github == "Enterprise":
         search_enterprise_github(keyword, filetype)
     else:
-        print("Enter GitHub or Enterprise. Your config.py file must have a token and API endpoint when searching Enterprise GitHub.")
+        search_github(keyword, filetype)
+    
     logging.basicConfig(filename='allsearchresultsinfo.log',
                         encoding='utf-8', 
                         format='%(asctime)s %(message)s',
