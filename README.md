@@ -48,3 +48,22 @@ To get a list of repos that have a keyword in the repo name that use `master` as
 3. Source the virtual environment. On Windows: `venv\Scripts\activate.bat` On Mac or Linux: `source venv/bin/activate`.
 4. Install the dependencies, namely the `PyGitHub` library: `pip install -r requirements.txt`.
 5. Run the script and enter the filter for repo name that you want to use in a large organization.
+
+## Development
+
+This project uses [pipenv](https://pipenv.pypa.io/en/latest/install/#installing-pipenv) for managing dependencies.
+
+- Adding a new dependency: 
+  - Install the dependency and add it to the Pipfile: `pipenv install <dependency>`
+  - Update the Pipfile.lock file: `pipenv lock`
+  - Update the requirements.txt file: `pipenv requirements > requirements.txt`
+
+- Updating dependencies:
+  - Update the dependency in Pipfile
+  - Update the Pipfile.lock file and update the virtualenv: `pipenv update`
+  - Update the requirements.txt file: `pipenv requirements > requirements.txt`
+
+- Developing using pipenv:
+  - Create the virtualenv (if you haven't already): `pipenv install`
+  - Update the virtualenv: `pipenv sync`
+  - Enter the virtualenv: `pipenv shell`
