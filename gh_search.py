@@ -123,12 +123,10 @@ def search_enterprise_github(keyword, filetype):
 
         else:
             # For queries with an exact file type
-            print("Query with filetype: ", filetype)
             query = f'"{keyword}" org:{config.egh_orgname} in:file extension:{filetype}'
             searchresults = eg.search_code(query, order='desc')
             
             logger.info(f'Found {searchresults.totalCount} entries(s) with {keyword}')
-            print("Found {} entries(s) with {}", searchresults.totalCount, keyword)
             print(f'Keyword,File type,ENGitHub URL,File match')
              
             for entry in searchresults:
@@ -154,19 +152,17 @@ def search_enterprise_github(keyword, filetype):
                     print(f'{keyword},{actualfiletype},{file.download_url},{file.path}')
 
 if __name__ == '__main__':
-    #which_github = input('Enter Enterprise for Enterprise GitHub, otherwise by default search GitHub: ')
-    #keyword = input('Enter biased keyword such as \"master\", \"slave\", \"blacklist\", \"whitelist\": ')
-    #filetype = input('Enter extension for files to search within such as \"py\" for Python, \"md\" for Markdown, and enter \"any\" for all file types: ')
-    keyword = 'whitelist'
+    which_github = input('Enter Enterprise for Enterprise GitHub, otherwise by default search GitHub: ')
+    keyword = input('Enter biased keyword such as \"master\", \"slave\", \"blacklist\", \"whitelist\": ')
+    filetype = input('Enter extension for files to search within such as \"py\" for Python, \"md\" for Markdown, and enter \"any\" for all file types: ')
     #keyword = 'slave'
     #filetype = 'any'
-    filetype = 'md'
+    #filetype = 'md'
     #filetype = 'py'
-    search_enterprise_github(keyword, filetype)
-    # if which_github == "Enterprise":
-    #     search_enterprise_github(keyword, filetype)
-    # else:
-    #     search_github(keyword, filetype)
+    if which_github == "Enterprise":
+        search_enterprise_github(keyword, filetype)
+    else:
+        search_github(keyword, filetype)
     
     logging.basicConfig(filename='allsearchresultsinfo.log',
                         encoding='utf-8', 
