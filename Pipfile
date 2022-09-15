@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 certifi = "==2022.9.14"
-cffi = "==1.15.0"
+cffi = "==1.15.1"
 charset-normalizer = "==2.0.12"
 deprecated = "==1.2.13"
 idna = "==3.3"
