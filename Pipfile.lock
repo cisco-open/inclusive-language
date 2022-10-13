@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "e158dfef4f727e235c2f2031b1511fdfd97692ba71194e603dc85b07d998ef30"
+            "sha256": "24fed3a14a23b643aad3cb73233a8bb8626b4422a05e78ee7a2c2af241850b19"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -128,11 +128,11 @@
         },
         "pygithub": {
             "hashes": [
-                "sha256:1bbfff9372047ff3f21d5cd8e07720f3dbfdaf6462fcaed9d815f528f1ba7283",
-                "sha256:2caf0054ea079b71e539741ae56c5a95e073b81fa472ce222e81667381b9601b"
+                "sha256:80c6d85cf0f9418ffeb840fd105840af694c4f17e102970badbaf678251f2a01",
+                "sha256:d15f13d82165306da8a68aefc0f848a6f6432d5febbff13b60a94758ce3ef8b5"
             ],
             "index": "pypi",
-            "version": "==1.55"
+            "version": "==1.56"
         },
         "pyjwt": {
             "hashes": [
