@@ -4,7 +4,7 @@ from github import Github
 import logging
 import time
 
-ACCESS_TOKEN = config.gh_api_key
+ACCESS_TOKEN = config.egh_api_key
 API_ENDPOINT = config.egh_api_endpoint
 
 g = Github(ACCESS_TOKEN)
