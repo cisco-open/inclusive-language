@@ -1,10 +1,10 @@
 # Inclusive language resources and tool examples
 
-When you're working on inclusive language use and terminology policies, it helps to have some tools at hand. These are just examples we are using to get started on our policy work and are not supported. That said, we welcome feedback and input as we start on our quest to eliminate certain keywords in our code and content.
+When you're working on inclusive language use and terminology policies, it helps to have some tools at hand. These are examples we are using to get started on our policy work and are not supported. That said, we welcome feedback and input as we start on our quest to eliminate certain keywords in our code and content.
 
 One script, `gh_search.py`, takes an inventory of which files contain keywords that you no longer want to use, creating a comma-separated listing that you can use for further analysis. You can use this script with either public GitHub (github.com) or Enterprise GitHub (currently tested with 3.3.7).
 
-Another script, `gh_default_branch.py`, looks for repos that still have the default branch set to `master` instead of `main`. You could modify that script to create an Issue automatically in any repo that meets that criteria, or simply run the script as a report for analysis.
+Another script, `gh_default_branch.py`, looks for repos that still have the default branch set to `master` instead of `main`. You could modify that script to create an Issue automatically in any repo that meets that criteria, or run the script as a report for analysis.
 
 To use these scripts, you must create a `config.py` file that contains a GitHub personal access token. The [GitHub docs describe creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). You'll notice that the `.gitignore` file in this repo ignores any file named `config.py`. 
 
@@ -52,10 +52,8 @@ To get a list of repos with a keyword in certain files:
    ```
    ```
    Enter Enterprise for Enterprise GitHub, otherwise by default search GitHub:  
-   Enter biased keyword such as master, slave, blacklist, whitelist: slave
-   Enter extension for files to search within such as py for Python, md for Markdown: md
-   You have 30/30 API calls remaining
-   Found 20 md file(s) with slave
+   Enter biased keyword such as "master", "slave", "blacklist", "whitelist": slave
+   Enter extension for files to search within such as "py" for Python, "md" for Markdown, and enter "any" for all file types: md
    Keyword,File type,GitHub URL,File match
    slave,md,https://raw.githubusercontent.com/CiscoDevNet/terraform-provider-intersight/5e7db7ccfd4065f0a5a116c9f357ac690878a25a/intersight_gosdk/docs/VirtualizationBondState.md {'intersight_gosdk/docs/VirtualizationBondState.md'}
    ...
