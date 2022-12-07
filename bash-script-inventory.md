@@ -46,6 +46,6 @@ Now you can look at the `all-master-links-lists.txt` file to see which repos hav
 cat all-master-links-lists.txt
 ```
 
-One way that you could compare how many references to "master" were in URLs versus how many references to "master" were in code comands or text was by looking at the difference between running these scripts with and without the backslashes surrounding "/master/." It's safe to estimate that any use of master without backslashes was in a command or text rather than in a URL. 
+One way that you could compare how many references to "master" were in URLs versus how many references to "master" were in code commands or text was by looking at the difference between running these scripts with and without the backslashes surrounding "/master/." It's safe to estimate that any use of master without backslashes was in a command or text rather than in a URL.
 
 In running these on more than 100 repos as a data point for reference, we also found there were no non-GitHub references to "master," which was also a good data point. 
