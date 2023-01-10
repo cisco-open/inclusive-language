@@ -5,7 +5,7 @@ import logging
 import time
 
 ACCESS_TOKEN = config.gh_api_key
-API_ENDPOINT = config.egh_api_endpoint
+API_ENDPOINT = config.gh_api_endpoint
 
 g = Github(ACCESS_TOKEN)
 eg = Github(base_url=API_ENDPOINT, login_or_token=config.egh_api_key)
