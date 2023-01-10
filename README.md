@@ -14,6 +14,7 @@ Example `config.py`:
 
 ```python
 gh_api_key = "ghp_TotallyaFaKeTok3nIprom1seYouS0d0ntTrYit"
+gh_api_endpoint = "https://api.github.com/"
 gh_orgname = "cisco-open"
 ```
 
@@ -34,6 +35,7 @@ To get a list of repos with a keyword in certain files:
 1. Create a `config.py` file in the root of the repository with your [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) with "repo" scope.
    ```python
    gh_api_key = "ghp_TotallyaFaKeTok3nIprom1seYouS0d0ntTrYit"
+   gh_api_endpoint = "https://api.github.com/"
    gh_orgname = "cisco-open"
    ```
 2. Create a Python virtual environment:
