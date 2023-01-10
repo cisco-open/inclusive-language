@@ -8,7 +8,7 @@ ACCESS_TOKEN = config.gh_api_key
 API_ENDPOINT = config.gh_api_endpoint
 
 g = Github(ACCESS_TOKEN)
-eg = Github(base_url=API_ENDPOINT, login_or_token=config.egh_api_key)
+eg = Github(base_url=API_ENDPOINT, login_or_token=ACCESS_TOKEN)
 
 def search_github(keyword, filetype):
     logging.basicConfig(filename='githubsearchresultsinfo.log',
@@ -45,7 +45,7 @@ def search_github(keyword, filetype):
                     except Exception as e:
                         # Sometimes the string split would find another character, causing an error
                         actualfiletype = path.rsplit(sep='/')[1] 
-                    print(f'{keyword},{actualfiletype},{entry.html_url},{entry.path}')
+                    print(f'{keyword},{actualfiletype},{entry.download_url},{entry.path}')
                 except Exception as e:
                     print("Error: ", e)
             else:
@@ -69,7 +69,7 @@ def search_github(keyword, filetype):
                 try:
                     # Try to avoid rate limits
                     time.sleep(2)
-                    print(f'{keyword},{filetype},{searchresults.html_url},{searchresults.path}')
+                    print(f'{keyword},{filetype},{entry.html_url},{entry.path}')
                 except Exception as e:
                     print("Error: ", e)
 
@@ -146,7 +146,7 @@ def search_enterprise_github(keyword, filetype):
                     except Exception as e:
                         # Sometimes the string split would find another character, causing an error
                         actualfiletype = path.rsplit(sep='/')[1] 
-                    print(f'{keyword},{actualfiletype},{entry.html_url},{entry.path}')
+                    print(f'{keyword},{actualfiletype},{entry.download_url},{entry.path}')
                 except Exception as e:
                     print("Error: ", e)
             else:
