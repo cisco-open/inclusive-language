@@ -158,11 +158,11 @@ def search_enterprise_github(keyword, filetype):
                     print(f'{keyword},{actualfiletype},{file.download_url},{file.path}')
 
 if __name__ == '__main__':
-    #which_github = input('Enter Enterprise for Enterprise GitHub, otherwise by default search GitHub: ')
-    #keyword = input('Enter biased keyword such as \"master\", \"slave\", \"blacklist\", \"whitelist\": ')
-    #filetype = input('Enter extension for files to search within such as \"py\" for Python, \"md\" for Markdown, and enter \"any\" for all file types: ')
-    keyword = 'master'
-    filetype = 'any'
+    which_github = input('Enter Enterprise for Enterprise GitHub, otherwise by default search GitHub: ')
+    keyword = input('Enter biased keyword such as \"master\", \"slave\", \"blacklist\", \"whitelist\": ')
+    filetype = input('Enter extension for files to search within such as \"py\" for Python, \"md\" for Markdown, and enter \"any\" for all file types: ')
+    #keyword = 'master'
+    #filetype = 'any'
     #filetype = 'md'
     #filetype = 'py'
     which_github = 'Enterprise'
