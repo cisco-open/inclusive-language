@@ -10,12 +10,12 @@ charset-normalizer = "==2.1.1"
 deprecated = "==1.2.13"
 idna = "==3.4"
 pycparser = "==2.21"
-pygithub = "==1.57"
+pygithub = "==1.58.1"
 pyjwt = "==2.6.0"
 pynacl = "==1.5.0"
-requests = "==2.28.1"
-urllib3 = "==1.26.13"
-wrapt = "==1.14.1"
+requests = "==2.28.2"
+urllib3 = "==1.26.15"
+wrapt = "==1.15.0"
 
 [dev-packages]
 
