@@ -82,10 +82,9 @@ def search_github(keyword, filetype):
 
 def search_enterprise_github(keyword, filetype):
     logging.basicConfig(filename='enterprisesearchresultsinfo.log',
-                        encoding='utf-8', 
                         format='%(asctime)s %(message)s',
                         filemode='w',
-                        level=logging.INFO)
+                        level=logging.DEBUG)
     logger = logging.getLogger()
     rate_limit = eg.get_rate_limit()
     rate = rate_limit.search
@@ -98,7 +97,7 @@ def search_enterprise_github(keyword, filetype):
     else:
         logger.info(f'You have {rate.remaining}/{rate.limit} API calls remaining')
         if filetype == 'any':
-            query = f'"{keyword}" org:{config.egh_orgname}'
+            query = f'"{keyword}" org:{config.gh_orgname}'
             print("Query is: ", query)
             searchresults = eg.search_code(query, order='desc')
             # search_code returns a paginated_list https://pygithub.readthedocs.io/en/latest/utilities.html?highlight=pagination#pagination
@@ -130,7 +129,7 @@ def search_enterprise_github(keyword, filetype):
 
         else:
             # For queries with an exact file type
-            query = f'"{keyword}" org:{config.egh_orgname} in:file extension:{filetype}'
+            query = f'"{keyword}" org:{config.gh_orgname} in:file extension:{filetype}'
             searchresults = eg.search_code(query, order='desc')
             
             logger.info(f'Found {searchresults.totalCount} entries(s) with {keyword}')
@@ -159,13 +158,14 @@ def search_enterprise_github(keyword, filetype):
                     print(f'{keyword},{actualfiletype},{file.download_url},{file.path}')
 
 if __name__ == '__main__':
-    which_github = input('Enter Enterprise for Enterprise GitHub, otherwise by default search GitHub: ')
-    keyword = input('Enter biased keyword such as \"master\", \"slave\", \"blacklist\", \"whitelist\": ')
-    filetype = input('Enter extension for files to search within such as \"py\" for Python, \"md\" for Markdown, and enter \"any\" for all file types: ')
-    #keyword = 'slave'
-    #filetype = 'any'
+    #which_github = input('Enter Enterprise for Enterprise GitHub, otherwise by default search GitHub: ')
+    #keyword = input('Enter biased keyword such as \"master\", \"slave\", \"blacklist\", \"whitelist\": ')
+    #filetype = input('Enter extension for files to search within such as \"py\" for Python, \"md\" for Markdown, and enter \"any\" for all file types: ')
+    keyword = 'master'
+    filetype = 'any'
     #filetype = 'md'
     #filetype = 'py'
+    which_github = 'Enterprise'
     if which_github == "Enterprise":
         search_enterprise_github(keyword, filetype)
     else:
