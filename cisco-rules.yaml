@@ -11,6 +11,13 @@ rules:
       - permit(list)
       - allow(list)
 
+  - name: blacklist
+    terms:
+      - blacklist
+    alternatives:
+      - ban(list)
+      - block(list)
+
   - name: master
     terms:
       - master
