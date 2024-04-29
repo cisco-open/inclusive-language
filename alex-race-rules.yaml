@@ -1,0 +1,116 @@
+# ************* Cisco Inclusive Language Policy for AlexJS Linter Rules YAML *******
+# Terminology defined based on: 
+# https://www.cisco.com/c/en/us/about/social-justice/inclusive-language-policy.html
+# ************* *************** *************** *************** *************** **
+
+- type: basic
+  note: Avoid using the term `master`; these suggestions are for the computer term, but there are better alternatives for other cases too
+  considerate:
+    - primary
+    - lead
+    - hub
+    - reference
+  inconsiderate:
+    - master
+- type: basic
+  note: Avoid using the term `master`; these suggestions are for the computer term, but there are better alternatives for other cases too
+  considerate:
+    - primaries
+    - hubs
+    - references
+  inconsiderate:
+    - masters
+- type: basic
+  note: Avoid using the term `slave`; these suggestions are for the computer term, but there are better alternatives for other cases too
+  considerate:
+    - secondary
+    - worker
+    - replica
+    - node
+  inconsiderate:
+    - slave
+- type: basic
+  note: Avoid using the term `slave`; these suggestions are for the computer term, but there are better alternatives for other cases too
+  considerate:
+    - secondaries
+    - workers
+    - replicas
+    - nodes
+  inconsiderate:
+    - slaves
+- type: basic
+  considerate:
+    - unethical hacker
+    - malicious actor
+  inconsiderate:
+    - blackhat
+- type: basic
+  considerate:
+    - ethical hacker
+    - security researcher
+  inconsiderate:
+    - whitehat
+- type: basic
+  considerate:
+    - person of color
+    - people of color
+  inconsiderate:
+    - nonwhite
+    - non white
+- type: basic
+  note: Replace racially-charged language with more accurate and inclusive words
+  considerate:
+    - blocklist
+    - wronglist
+    - banlist
+    - deny list
+  inconsiderate:
+    - blacklist
+    - black list
+- type: basic
+  note: Replace racially-charged language with more accurate and inclusive words
+  considerate:
+    - blocklisted
+    - wronglisted
+    - banlisted
+    - deny-listed
+  inconsiderate:
+    - blacklisted
+- type: basic
+  note: Replace racially-charged language with more accurate and inclusive words
+  considerate:
+    - blocklisting
+    - wronglisting
+    - banlisting
+    - deny-listing
+  inconsiderate:
+    - blacklisting
+- type: basic
+  note: Replace racially-charged language with more accurate and inclusive words
+  considerate:
+    - passlist
+    - alrightlist
+    - safelist
+    - allow list
+  inconsiderate:
+    - whitelist
+    - white list
+- type: basic
+  note: Replace racially-charged language with more accurate and inclusive words
+  considerate:
+    - passlisted
+    - alrightlisted
+    - safelisted
+    - allow-listed
+  inconsiderate:
+    - whitelisted
+- type: basic
+  note: Replace racially-charged language with more accurate and inclusive words
+  considerate:
+    - passlisting
+    - alrightlisting
+    - safelisting
+    - allow-listing
+  inconsiderate:
+    - whitelisting
+
