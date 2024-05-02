@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "alex": "^11.0.1"
+  },
+  "scripts": {
+    "lint-language": "alex"
+  }
+}
