@@ -5,3 +5,5 @@ venv/
 *.xlsx
 *.log
 Pipfile.lock
+node_modules/
+package-lock.json

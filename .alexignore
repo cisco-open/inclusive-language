@@ -1,0 +1,8 @@
+# The CODE_OF_CONDUCT.md contains some language with implicit meanings
+CODE_OF_CONDUCT.md
+
+# The rules files need to contain the terms to test for 
+cisco-rules.yaml
+
+# The README has examples for how to run the scripts with biased terms
+README.md
